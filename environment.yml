@@ -1,134 +1,123 @@
-name: image_analysis
-channels:
-- conda-forge
-- defaults
-dependencies:
-- appnope=0.1.0=py36_0
-- bkcharts=0.2=py36_0
-- blas=1.1=openblas
-- bleach=1.5.0=py36_0
-- bokeh=0.12.6=py36_0
-- bzip2=1.0.6=1
-- ca-certificates=2017.4.17=0
-- cairo=1.14.6=4
-- certifi=2017.4.17=py36_0
-- chardet=3.0.2=py36_1
-- click=6.7=py36_0
-- cloudpickle=0.3.1=py36_0
-- cycler=0.10.0=py36_0
-- dask=0.15.0=py36_0
-- dbus=1.10.10=3
-- decorator=4.0.11=py36_0
-- distributed=1.17.1=py36_0
-- entrypoints=0.2.3=py36_1
-- expat=2.1.0=2
-- ffmpeg=3.2.4=1
-- fontconfig=2.12.1=4
-- freetype=2.7=1
-- gettext=0.19.8.1=0
-- giflib=5.1.4=0
-- glib=2.51.4=0
-- harfbuzz=1.3.4=2
-- hdf5=1.8.18=0
-- heapdict=1.0.0=py36_0
-- html5lib=0.9999999=py36_0
-- icu=58.1=1
-- idna=2.5=py36_0
-- imageio=2.2.0=py36_0
-- ipykernel=4.6.1=py36_0
-- ipython=6.1.0=py36_0
-- ipython_genutils=0.2.0=py36_0
-- ipywidgets=6.0.0=py36_0
-- jasper=1.900.1=4
-- jedi=0.10.0=py36_0
-- jinja2=2.9.5=py36_0
-- jpeg=9b=0
-- jsonschema=2.5.1=py36_0
-- jupyter=1.0.0=py36_0
-- jupyter_client=5.1.0=py36_0
-- jupyter_console=5.1.0=py36_0
-- jupyter_core=4.3.0=py36_0
-- libffi=3.2.1=3
-- libgfortran=3.0.0=0
-- libiconv=1.14=4
-- libpng=1.6.28=0
-- libsodium=1.0.10=0
-- libtiff=4.0.6=7
-- libwebp=0.5.2=7
-- libxml2=2.9.4=4
-- locket=0.2.0=py36_1
-- markupsafe=1.0=py36_0
-- matplotlib=2.0.2=np113py36_0
-- mistune=0.7.4=py36_0
-- msgpack-python=0.4.8=py36_0
-- nbconvert=5.2.1=py36_1
-- nbformat=4.3.0=py36_0
-- ncurses=5.9=10
-- networkx=1.11=py36_0
-- notebook=5.0.0=py36_0
-- numpy=1.13.0=py36_blas_openblas_200
-- olefile=0.44=py36_0
-- openblas=0.2.19=2
-- opencv=3.2.0=np113py36_blas_openblas_204
-- openssl=1.0.2k=0
-- pandas=0.20.2=np113py36_1
-- pandoc=1.19.2=0
-- pandocfilters=1.4.1=py36_0
-- partd=0.3.8=py36_0
-- pcre=8.39=0
-- pexpect=4.2.1=py36_0
-- pickleshare=0.7.3=py36_0
-- pillow=4.2.0=py36_0
-- pip=9.0.1=py36_0
-- pixman=0.34.0=0
-- prompt_toolkit=1.0.14=py36_0
-- psutil=5.2.1=py36_0
-- ptyprocess=0.5.2=py36_0
-- pygments=2.2.0=py36_0
-- pyparsing=2.2.0=py36_0
-- pyqt=5.6.0=py36_4
-- python=3.6.1=3
-- python-dateutil=2.6.0=py36_0
-- pytz=2017.2=py36_0
-- pywavelets=0.5.2=np113py36_0
-- pyyaml=3.12=py36_1
-- pyzmq=16.0.2=py36_2
-- qt=5.6.2=1
-- qtconsole=4.3.0=py36_0
-- readline=6.2=0
-- requests=2.18.1=py36_0
-- scikit-image=0.13.0=np113py36_0
-- scipy=0.19.1=np113py36_blas_openblas_200
-- setuptools=33.1.1=py36_0
-- simplegeneric=0.8.1=py36_0
-- sip=4.18=py36_1
-- six=1.10.0=py36_1
-- sortedcontainers=1.5.3=py36_0
-- sqlite=3.13.0=1
-- tblib=1.3.2=py36_0
-- terminado=0.6=py36_0
-- testpath=0.3=py36_0
-- tk=8.5.19=1
-- toolz=0.8.2=py36_0
-- tornado=4.5.1=py36_0
-- traitlets=4.3.2=py36_0
-- urllib3=1.21.1=py36_0
-- wcwidth=0.1.7=py36_0
-- webencodings=0.5=py36_0
-- wheel=0.29.0=py36_0
-- widgetsnbextension=2.0.0=py36_0
-- x264=20131217=3
-- xz=5.2.2=0
-- yaml=0.1.6=0
-- zeromq=4.2.1=1
-- zict=0.1.2=py36_0
-- zlib=1.2.11=0
-- mkl=2017.0.3=0
-- pip:
-  - ipython-genutils==0.2.0
-  - jupyter-client==5.1.0
-  - jupyter-console==5.1.0
-  - jupyter-core==4.3.0
-  - prompt-toolkit==1.0.14
-prefix: /anaconda/envs/image_analysis
-
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: osx-64
+appnope=0.1.0=py36_0
+bkcharts=0.2=py36_0
+blas=1.1=openblas
+bleach=1.5.0=py36_0
+bokeh=0.12.6=py36_0
+bzip2=1.0.6=1
+ca-certificates=2017.4.17=0
+cairo=1.14.6=4
+certifi=2017.4.17=py36_0
+chardet=3.0.2=py36_1
+click=6.7=py36_0
+cloudpickle=0.3.1=py36_0
+cycler=0.10.0=py36_0
+dask=0.15.1=py36_0
+dbus=1.10.10=3
+decorator=4.0.11=py36_0
+distributed=1.18.0=py36_0
+entrypoints=0.2.3=py36_1
+expat=2.2.1=0
+ffmpeg=3.2.4=1
+fontconfig=2.12.1=4
+freetype=2.7=1
+gettext=0.19.8.1=0
+giflib=5.1.4=0
+glib=2.51.4=0
+harfbuzz=1.3.4=2
+hdf5=1.8.18=0
+heapdict=1.0.0=py36_0
+html5lib=0.9999999=py36_0
+icu=58.1=1
+idna=2.5=py36_0
+imageio=2.2.0=py36_0
+ipykernel=4.6.1=py36_0
+ipython=6.1.0=py36_0
+ipython_genutils=0.2.0=py36_0
+ipywidgets=6.0.0=py36_0
+jasper=1.900.1=4
+jedi=0.10.0=py36_0
+jinja2=2.9.5=py36_0
+jpeg=9b=0
+jsonschema=2.5.1=py36_0
+jupyter=1.0.0=py36_0
+jupyter_client=5.1.0=py36_0
+jupyter_console=5.1.0=py36_0
+jupyter_core=4.3.0=py36_0
+libffi=3.2.1=3
+libgfortran=3.0.0=0
+libiconv=1.14=4
+libpng=1.6.28=0
+libsodium=1.0.10=0
+libtiff=4.0.6=7
+libwebp=0.5.2=7
+libxml2=2.9.4=4
+locket=0.2.0=py36_1
+markupsafe=1.0=py36_0
+matplotlib=2.0.2=np113py36_0
+mistune=0.7.4=py36_0
+msgpack-python=0.4.8=py36_0
+nbconvert=5.2.1=py36_1
+nbformat=4.3.0=py36_0
+ncurses=5.9=10
+networkx=1.11=py36_0
+notebook=5.0.0=py36_0
+numpy=1.13.1=py36_blas_openblas_200
+olefile=0.44=py36_0
+openblas=0.2.19=2
+opencv=3.2.0=np113py36_blas_openblas_204
+openssl=1.0.2l=0
+pandas=0.20.3=py36_1
+pandoc=1.19.2=0
+pandocfilters=1.4.1=py36_0
+partd=0.3.8=py36_0
+pcre=8.39=0
+pexpect=4.2.1=py36_0
+pickleshare=0.7.3=py36_0
+pillow=4.2.1=py36_0
+pip=9.0.1=py36_0
+pixman=0.34.0=0
+prompt_toolkit=1.0.14=py36_0
+psutil=5.2.1=py36_0
+ptyprocess=0.5.2=py36_0
+pygments=2.2.0=py36_0
+pyparsing=2.2.0=py36_0
+pyqt=5.6.0=py36_4
+python=3.6.1=3
+python-dateutil=2.6.0=py36_0
+pytz=2017.2=py36_0
+pywavelets=0.5.2=np113py36_0
+pyyaml=3.12=py36_1
+pyzmq=16.0.2=py36_2
+qt=5.6.2=1
+qtconsole=4.3.0=py36_0
+readline=6.2=0
+requests=2.18.1=py36_0
+scikit-image=0.13.0=np113py36_0
+scipy=0.19.1=np113py36_blas_openblas_200
+setuptools=33.1.1=py36_0
+simplegeneric=0.8.1=py36_0
+sip=4.18=py36_1
+six=1.10.0=py36_1
+sortedcontainers=1.5.3=py36_0
+sqlite=3.13.0=1
+tblib=1.3.2=py36_0
+terminado=0.6=py36_0
+testpath=0.3=py36_0
+tk=8.5.19=1
+toolz=0.8.2=py36_0
+tornado=4.5.1=py36_0
+traitlets=4.3.2=py36_0
+urllib3=1.21.1=py36_0
+wcwidth=0.1.7=py36_0
+webencodings=0.5=py36_0
+wheel=0.29.0=py36_0
+widgetsnbextension=2.0.0=py36_0
+x264=20131217=3
+xz=5.2.2=0
+yaml=0.1.6=0
+zeromq=4.2.1=1
+zict=0.1.2=py36_0
+zlib=1.2.11=0
