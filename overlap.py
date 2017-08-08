@@ -17,18 +17,17 @@ import subprocess
 
 def detect_images(img):
     """Find which input image is in which channel."""
-    average_color_per_row = np.average(img, axis=0)
-    blue, green, red = np.average(average_color_per_row, axis=0)
-    if red > 5 and green > 5:
-        return "combined"
-    elif green > red and green > blue:
+    max_color_per_row = np.max(img, axis=0)
+    blue, green, red = np.max(max_color_per_row, axis=0)
+    thresh = 150
+    if green > thresh and red < thresh and blue < thresh:
         return "green"
-    elif red > green and red > blue:
+    elif red > thresh and green < thresh and blue < thresh:
         return "red"
-    elif blue > green:
+    elif blue > thresh and red < thresh and green < thresh:
         return "blue"
     else:
-        return "NA"
+        return "combined"
 
 def get_args():
     ap = argparse.ArgumentParser()
@@ -61,7 +60,7 @@ def get_images(path):
 
 def get_thresh(img, min_value = 3):
     # blur
-    blurred = cv2.bilateralFilter(img ,9,75,75)
+    blurred = cv2.bilateralFilter(img ,3,75,75)
     # convert to gray
     gray = cv2.cvtColor(blurred, cv2.COLOR_BGR2GRAY)
     # threshold
@@ -94,10 +93,12 @@ if __name__ == "__main__":
 
     thresh = get_thresh(img = blue, min_value = 5)
 
+    cv2.imwrite(join(path, "thresh.jpg"), thresh)
+
     # do the water shedding
     D = ndimage.distance_transform_edt(thresh)
     ### this min_distance parameter is really important
-    localMax = peak_local_max(D, indices=False, min_distance= 7, labels=thresh)
+    localMax = peak_local_max(D, indices=False, min_distance= 5, labels=thresh)
     markers = ndimage.label(localMax, structure=np.ones((3, 3)))[0]
     labels = watershed(-D, markers, mask=thresh)
 
@@ -117,7 +118,7 @@ if __name__ == "__main__":
         cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
         c = max(cnts, key=cv2.contourArea)
 
-        if cv2.contourArea(c) > 30:
+        if cv2.contourArea(c) > 50:
 
             # find the average intensity of the red stain contour
             mask = np.zeros(red_gray.shape,np.uint8)
@@ -136,32 +137,19 @@ if __name__ == "__main__":
             centers.append((int(x), int(y)))
 
             # make into categories
-            if avg_green > 15 and avg_red > 20:
+            if avg_green > 15 and avg_red > 14:
                 cat.append("both")
-            elif avg_green <= 15 and avg_red > 20:
+            elif avg_green <= 15 and avg_red > 14:
                 cat.append("red")
-            elif avg_green > 15 and avg_red <= 20:
+            elif avg_green > 15 and avg_red <= 14:
                 cat.append("green")
             else:
                 cat.append("nada")
 
-    #         # find the average intensity of the red stain contour
-    #         mask = np.zeros(green_gray.shape,np.uint8)
-
-    #         # get the enclosing circle of the contour
-    #         ((x, y), r) = cv2.minEnclosingCircle(c)
-
-    #         # draw the circle on an empty image to ask as a mask
-    #         cv2.circle(mask, (int(x), int(y)), int(r*scaling_factor), 1, thickness=-1)
-
-    #         # masked_red = cv2.bitwise_and(red_grey, red_grey, mask = mask)
-    #         avg_red = cv2.mean(red_gray, mask = mask)[0]
-    #         red.append(avg_red)
-
-
             # draw a circle enclosing the object
             ((x, y), r) = cv2.minEnclosingCircle(c)
-            cv2.circle(blue, (int(x), int(y)), int(r), (29, 40, 200), 2)
+            cv2.circle(blue, (int(x), int(y)), int(r),(150, 150 ,150), 2)
+            cv2.circle(combined, (int(x), int(y)), int(r),(150, 150 , 150), 2)
             if cat[-1] == "both":
                 cv2.circle(combined, (int(x), int(y)), int(r),(255, 255 ,255), 2)
                 cv2.circle(red, (int(x), int(y)), int(r),(255, 255 ,255), 2)
@@ -172,9 +160,8 @@ if __name__ == "__main__":
             elif cat[-1] == "green":
                 cv2.circle(combined, (int(x), int(y)), int(r),(14, 255 ,20), 2)
                 cv2.circle(green, (int(x), int(y)), int(r),(14, 255 ,20), 2)
-            else:
-                cv2.circle(combined, (int(x), int(y)), int(r),(150, 150 ,150), 2)
-                cv2.circle(blue, (int(x), int(y)), int(r),(150, 150 ,150), 2)
+            # else:
+            #     cv2.circle(combined, (int(x), int(y)), int(r),(150, 150 ,150), 2)
     #         cv2.putText(combined, "{}: {}".format(label, cat[-1]), (int(x) - 10, int(y)),cv2.FONT_HERSHEY_SIMPLEX, 0.4, (29, 40, 200), 2)
 
     print("number of nuclei identified: {}".format(len(centers)))
